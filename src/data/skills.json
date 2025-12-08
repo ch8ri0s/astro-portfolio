@@ -1,0 +1,22 @@
+[
+  {
+    "icon": "🎯",
+    "title": "Product Strategy",
+    "tags": ["Product Architecture", "Roadmap Planning", "Design Thinking", "Agile Methodologies", "Stakeholder Management"]
+  },
+  {
+    "icon": "🤖",
+    "title": "AI & Data",
+    "tags": ["Local LLM Integration", "NLP Pipelines", "Data Products", "ML Operations", "Privacy-First AI"]
+  },
+  {
+    "icon": "⚡",
+    "title": "Technology",
+    "tags": ["Full Stack Development", "Cloud & DevOps", "IoT Systems", "SaaS Platforms", "API Design"]
+  },
+  {
+    "icon": "👥",
+    "title": "Leadership",
+    "tags": ["Team Building", "Change Management", "Digital Transformation", "Program Management", "Mentorship"]
+  }
+]

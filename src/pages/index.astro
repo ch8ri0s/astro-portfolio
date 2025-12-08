@@ -1,0 +1,202 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import TimelineItem from '../components/TimelineItem.astro';
+import SkillCard from '../components/SkillCard.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+import { getCollection } from 'astro:content';
+import skills from '../data/skills.json';
+import stats from '../data/stats.json';
+
+// Get content collections sorted by order
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const experiences = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout title="Olivier Schaer – AI Solution Product Architect">
+  <Header />
+  <Hero />
+  <About stats={stats} />
+
+  <section class="projects" id="projects">
+    <div class="section-header">
+      <div class="section-label">Selected Work</div>
+      <h2 class="section-title">Products that solve real problems</h2>
+    </div>
+    <div class="projects-grid">
+      {projects.map(project => (
+        <ProjectCard
+          number={project.data.number}
+          title={project.data.title}
+          description={project.data.description}
+          tags={project.data.tags}
+          link={project.data.link}
+          linkText={project.data.linkText}
+          image={project.data.image}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="experience" id="experience">
+    <div class="section-header">
+      <div class="section-label">Career Journey</div>
+      <h2 class="section-title">Building at the intersection of technology and human experience</h2>
+    </div>
+    <div class="timeline">
+      {experiences.map(exp => (
+        <TimelineItem
+          title={exp.data.title}
+          company={exp.data.company}
+          location={exp.data.location}
+          period={exp.data.period}
+          description={exp.data.description}
+          achievements={exp.data.achievements}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <div class="section-header">
+      <div class="section-label">Expertise</div>
+      <h2 class="section-title">Bridging strategy and execution</h2>
+    </div>
+    <div class="skills-grid">
+      {skills.map(skill => (
+        <SkillCard
+          icon={skill.icon}
+          title={skill.title}
+          tags={skill.tags}
+        />
+      ))}
+    </div>
+  </section>
+
+  <Contact />
+  <Footer />
+</Layout>
+
+<style>
+  .projects {
+    padding: 8rem 5%;
+    background: var(--bg);
+  }
+
+  .projects-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .experience {
+    padding: 8rem 5%;
+    background: var(--bg);
+  }
+
+  .timeline {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .skills {
+    padding: 5rem 5%;
+    background: var(--bg);
+  }
+
+  .skills-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 968px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+
+  // Navigation scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (nav) {
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }
+  });
+
+  // Intersection Observer for fade-in animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        entry.target.classList.remove('animate');
+      }
+    });
+  }, observerOptions);
+
+  // Initialize animations
+  document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.timeline-item, .project-card');
+    animatedElements.forEach(item => {
+      item.classList.add('animate');
+      observer.observe(item);
+    });
+  });
+
+  // Hide scroll indicator after scrolling
+  window.addEventListener('scroll', () => {
+    const scrollIndicator = document.querySelector('.scroll-indicator') as HTMLElement | null;
+    if (scrollIndicator) {
+      scrollIndicator.style.opacity = window.scrollY > 200 ? '0' : '1';
+    }
+  });
+
+  // Parallax effect for hero background
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero') as HTMLElement | null;
+
+        if (hero && scrolled < window.innerHeight) {
+          const parallaxSpeed = 0.4;
+          hero.style.setProperty('--parallax-offset', `${scrolled * parallaxSpeed}px`);
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+</script>

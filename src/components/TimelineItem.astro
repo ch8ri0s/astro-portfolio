@@ -1,0 +1,100 @@
+---
+interface Props {
+  title: string;
+  company: string;
+  location: string;
+  period: string;
+  description: string;
+  achievements: string[];
+}
+
+const { title, company, location, period, description, achievements } = Astro.props;
+---
+
+<div class="timeline-item">
+  <div class="timeline-header">
+    <div>
+      <h3>{title}</h3>
+      <div class="timeline-company">{company} • {location}</div>
+    </div>
+    <div class="timeline-period">{period}</div>
+  </div>
+  <p class="timeline-description">{description}</p>
+  <ul class="achievements">
+    {achievements.map(achievement => <li>{achievement}</li>)}
+  </ul>
+</div>
+
+<style>
+  .timeline-item {
+    padding: 2.5rem;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .timeline-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-header h3 {
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
+  }
+
+  .timeline-company {
+    color: var(--accent);
+    font-size: 0.95rem;
+    margin-top: 0.25rem;
+  }
+
+  .timeline-period {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .timeline-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .achievements {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .achievements li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .achievements li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  @media (max-width: 968px) {
+    .timeline-header {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>

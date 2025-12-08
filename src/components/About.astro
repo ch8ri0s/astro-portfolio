@@ -1,0 +1,112 @@
+---
+interface Stat {
+  number: string;
+  label: string;
+}
+
+interface Props {
+  stats: Stat[];
+}
+
+const { stats } = Astro.props;
+---
+
+<section class="about" id="about">
+  <div class="section-header">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">Driven by purpose, guided by clarity</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-image"></div>
+    <div class="about-content">
+      <h3>Making impact through simplicity</h3>
+      <p>
+        What drives me is building products that matter—solutions that don't just exist as
+        technology but make a real difference in people's lives. I'm inspired by companies
+        whose impact is visible in society, whether through devices millions use, platforms
+        that simplify complexity, or services that keep people safe.
+      </p>
+      <p>
+        My journey through start-ups, global leaders, and Fortune 100 companies has been
+        driven by a single goal: making technology seamless for the people who use it. Each
+        experience has strengthened my belief that great products remove friction and empower
+        users through clarity and simplicity.
+      </p>
+      <div class="stats">
+        {stats.map(stat => (
+          <div class="stat">
+            <div class="stat-number">{stat.number}</div>
+            <div class="stat-label">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: 8rem 5%;
+    background: white;
+  }
+
+  .about-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-image {
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, #e8e8e8 0%, #f5f5f5 100%);
+    border-radius: 8px;
+  }
+
+  .about-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .about-content p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+  }
+
+  @media (max-width: 968px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

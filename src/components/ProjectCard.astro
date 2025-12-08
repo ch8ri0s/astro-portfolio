@@ -1,0 +1,118 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  description: string;
+  tags: string[];
+  link: string;
+  linkText: string;
+  image: string;
+}
+
+const { number, title, description, tags, link, linkText, image } = Astro.props;
+---
+
+<div class="project-card">
+  <div class="project-image" style={`background-image: url('${image}')`}></div>
+  <div class="project-content">
+    <div class="project-number">{number}</div>
+    <h3>{title}</h3>
+    <p class="project-description">{description}</p>
+    <div class="project-tags">
+      {tags.map(tag => <span class="tag">{tag}</span>)}
+    </div>
+    <a href={link} class="project-link" target="_blank" rel="noopener noreferrer">{linkText} →</a>
+  </div>
+</div>
+
+<style>
+  .project-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    padding: 3rem 0;
+  }
+
+  .project-card:nth-child(even) {
+    direction: rtl;
+  }
+
+  .project-card:nth-child(even) > * {
+    direction: ltr;
+  }
+
+  .project-image {
+    aspect-ratio: 16/10;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    transition: transform 0.5s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .project-card:hover .project-image {
+    transform: scale(1.02);
+  }
+
+  .project-number {
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .project-description {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tag {
+    padding: 0.4rem 1rem;
+    background: var(--bg);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .project-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s ease;
+  }
+
+  .project-link:hover {
+    gap: 1rem;
+  }
+
+  @media (max-width: 968px) {
+    .project-card,
+    .project-card:nth-child(even) {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+
+    .project-card:nth-child(even) .project-image {
+      order: 0;
+    }
+  }
+</style>
