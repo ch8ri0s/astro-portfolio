@@ -1,0 +1,257 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Tale Around – Local Commerce Discovery Platform | Olivier Schaer" description="As CPO, led product strategy for a journalist-powered local commerce discovery platform with social media at its core">
+  <nav id="nav">
+    <a href="/" class="logo">Olivier Schaer</a>
+    <a href="/#projects" class="back-link">← Back to Projects</a>
+  </nav>
+
+  <main class="project-page">
+    <header class="project-header">
+      <div class="project-meta">
+        <span class="location">Lausanne, 2015</span>
+        <span class="category">Chief Product Officer</span>
+      </div>
+      <h1>Tale Around</h1>
+      <p class="project-subtitle">Local commerce discovery powered by authentic storytelling</p>
+      <p class="project-description">
+        As CPO, I defined the product vision for a platform that helped users discover hidden local gems through
+        journalist-curated venue reviews. Social media presence was at the heart of the experience, enabling
+        authentic storytelling and community engagement around neighborhood shops and artisans.
+      </p>
+      <div class="tags">
+        <span class="tag">Product Strategy</span>
+        <span class="tag">Social Media</span>
+        <span class="tag">Local Commerce</span>
+        <span class="tag">Mobile App</span>
+      </div>
+    </header>
+
+    <section class="gallery-section">
+      <h2>Application Interfaces</h2>
+      <p class="section-description">Desktop and web application design showcasing the user experience</p>
+      <div class="gallery-grid three-col">
+        <img src="/images/tale-around/screen-web-1.jpg" alt="Tale Around web interface - main screen" loading="lazy" />
+        <img src="/images/tale-around/screen-web-3.jpg" alt="Tale Around web interface - discovery view" loading="lazy" />
+        <img src="/images/tale-around/screen-web-2.jpg" alt="Tale Around web interface - detail view" loading="lazy" />
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2>Newsletter Headers</h2>
+      <p class="section-description">Generic newsletter header variations for communication campaigns</p>
+      <div class="gallery-grid three-col">
+        <img src="/images/tale-around/newsletter-1.png" alt="Tale Around newsletter header design 1" loading="lazy" />
+        <img src="/images/tale-around/newsletter-2.png" alt="Tale Around newsletter header design 2" loading="lazy" />
+        <img src="/images/tale-around/newsletter-3.png" alt="Tale Around newsletter header design 3" loading="lazy" />
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2>Mobile Application</h2>
+      <p class="section-description">iPhone interface mockups demonstrating mobile-first design</p>
+      <div class="gallery-grid three-col mobile-mockups">
+        <img src="/images/tale-around/iphone-1.jpg" alt="Tale Around iPhone app - screen 1" loading="lazy" />
+        <img src="/images/tale-around/iphone-2.jpg" alt="Tale Around iPhone app - screen 2" loading="lazy" />
+        <img src="/images/tale-around/iphone-3.jpg" alt="Tale Around iPhone app - screen 3" loading="lazy" />
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2>Complete Page Design</h2>
+      <p class="section-description">Comprehensive page layout showcasing the full brand experience</p>
+      <div class="gallery-single">
+        <img src="/images/tale-around/page-design.jpg" alt="Tale Around complete page design" loading="lazy" />
+      </div>
+    </section>
+
+    <div class="back-nav">
+      <a href="/#projects" class="btn btn-secondary">← Back to Projects</a>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(250, 250, 250, 0.95);
+    backdrop-filter: blur(10px);
+  }
+
+  .logo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .back-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+
+  .back-link:hover {
+    color: var(--accent);
+  }
+
+  .project-page {
+    padding-top: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .project-header {
+    text-align: center;
+    padding: 4rem 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 4rem;
+  }
+
+  .project-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-meta span {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .project-header h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+
+  .project-subtitle {
+    font-size: 1.4rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .project-description {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.1rem;
+  }
+
+  .tags {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    padding: 0.5rem 1rem;
+    background: #f0f0f0;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .gallery-section {
+    margin-bottom: 5rem;
+  }
+
+  .gallery-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .section-description {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .gallery-grid.three-col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery-grid img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery-grid img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobile-mockups img {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .gallery-single {
+    text-align: center;
+  }
+
+  .gallery-single img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .back-nav {
+    text-align: center;
+    padding: 3rem 0 5rem;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-grid.three-col {
+      grid-template-columns: 1fr;
+    }
+
+    .mobile-mockups {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .mobile-mockups img {
+      max-width: 100%;
+    }
+
+    .project-meta {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .mobile-mockups {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -7,7 +7,7 @@ const projectsCollection = defineCollection({
     number: z.string(),
     description: z.string(),
     tags: z.array(z.string()),
-    link: z.string().url(),
+    link: z.string(),
     linkText: z.string(),
     image: z.string(),
     order: z.number(),
